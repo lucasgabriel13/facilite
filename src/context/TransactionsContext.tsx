@@ -40,7 +40,6 @@ const TransactionProvider = ({ children }: TransactionProviderProps) => {
 
   const fetchTransactions = useCallback(async () => {
     setIsLoading(true);
-    console.log('parei aqui');
 
     const userStorage = localStorage.getItem('@facilite:user');
 
