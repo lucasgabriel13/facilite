@@ -4,6 +4,10 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   align-items: flex-start;
+
+  @media (max-width: 728px) {
+    flex-direction: column;
+  }
 `;
 
 export const ContentLeft = styled.div`
@@ -11,6 +15,12 @@ export const ContentLeft = styled.div`
   height: 100vh;
   background: ${({ theme }) => theme['gray-700']};
   padding: 5rem;
+
+  @media (max-width: 728px) {
+    width: 100%;
+    height: 200px;
+    padding: 2rem;
+  }
 `;
 
 export const Heading = styled.div`
@@ -30,6 +40,10 @@ export const IllustrationWrapper = styled.div`
 
   img {
     width: 100%;
+
+    @media (max-width: 728px) {
+      display: none;
+    }
   }
 `;
 
@@ -44,6 +58,12 @@ export const ContentRight = styled.div`
   justify-content: center;
 
   gap: 3.25rem;
+
+  @media (max-width: 728px) {
+    width: 100%;
+    height: 100%;
+    margin-top: 4rem;
+  }
 `;
 
 export const Title = styled.h1`
