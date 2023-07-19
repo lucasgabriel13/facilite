@@ -3,6 +3,8 @@
 ## 💻 O projeto
 O projeto Facilite foi desenvolvido para aplicar os conhecimentos de densenvolvimento web criando uma aplicação que possa ser utilizada no dia-a-dia
 
+Teste a aplicação: [clique aqui](https://facilite.vercel.app/)
+
 ## ✨ Tecnologias utilizadas
 - [ ] React
 - [ ] Styled-components
