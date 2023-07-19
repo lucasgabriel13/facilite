@@ -26,9 +26,26 @@ export const TransactionsTable = styled.table`
       border-bottom-left-radius: 6px;
     }
 
+    &:nth-child(2) {
+      @media (max-width: 728px) {
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+      }
+    }
+
+    &:nth-child(3) {
+      @media (max-width: 728px) {
+        display: none;
+      }
+    }
+
     &:last-child {
       border-top-right-radius: 6px;
       border-bottom-right-radius: 6px;
+
+      @media (max-width: 998px) {
+        display: none;
+      }
     }
   }
 `;

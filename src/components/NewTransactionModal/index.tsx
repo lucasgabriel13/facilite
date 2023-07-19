@@ -15,7 +15,7 @@ import {
 } from './styles';
 
 export const NewTransactionModal: React.FC = () => {
-  const { createTransaction } = useTransaction();
+  const { createTransaction, onCloseModalTransaction } = useTransaction();
 
   const {
     register,
@@ -33,6 +33,7 @@ export const NewTransactionModal: React.FC = () => {
   const handleCreateNewTransaction = async (data: NewTransactionFormType) => {
     createTransaction(data);
     reset();
+    onCloseModalTransaction();
   };
 
   return (

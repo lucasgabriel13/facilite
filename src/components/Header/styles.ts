@@ -41,12 +41,21 @@ export const NewTransactionButton = styled.button`
     background: ${({ theme }) => theme['green-700']};
     transition: background-color 0.3s;
   }
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+    padding: 0 0.5rem;
+  }
 `;
 
 export const LeftContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 2rem;
+
+  @media (max-width: 768px) {
+    gap: 0.5rem;
+  }
 `;
 
 export const Profile = styled.button`

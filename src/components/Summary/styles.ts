@@ -15,6 +15,10 @@ export const SummaryContainer = styled.section`
   gap: 2rem;
 
   margin-top: -5rem;
+
+  @media (max-width: 998px) {
+    overflow-x: scroll;
+  }
 `;
 
 export const SummaryCard = styled.div<SummaryCardStyleProps>`

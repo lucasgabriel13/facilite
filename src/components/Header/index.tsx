@@ -4,6 +4,7 @@ import { SignOut } from 'phosphor-react';
 import React from 'react';
 
 import logoImg from '../../assets/logo.svg';
+import { useTransaction } from '../../context/TransactionsContext';
 import { useUser } from '../../context/UserContext';
 import { NewTransactionModal } from '../NewTransactionModal';
 import {
@@ -18,14 +19,17 @@ import {
 
 export const Header: React.FC = () => {
   const { user, signOut } = useUser();
+  const { modalTransactionOpen, onOpenModalTransaction } = useTransaction();
   return (
     <HeaderContainer>
       <HeaderContent>
         <img src={logoImg} alt="" />
         <LeftContainer>
-          <Dialog.Root>
+          <Dialog.Root open={modalTransactionOpen}>
             <Dialog.Trigger asChild>
-              <NewTransactionButton type="button">Nova transação</NewTransactionButton>
+              <NewTransactionButton type="button" onClick={onOpenModalTransaction}>
+                Nova transação
+              </NewTransactionButton>
             </Dialog.Trigger>
             <NewTransactionModal />
           </Dialog.Root>

@@ -24,8 +24,11 @@ interface NewTransactionInputType {
 interface TransactionContextType {
   isLoading: boolean;
   transactions: Transaction[];
+  modalTransactionOpen: boolean;
   fetchTransactions: (query?: string) => Promise<void>;
   createTransaction: (data: NewTransactionInputType) => void;
+  onOpenModalTransaction: () => void;
+  onCloseModalTransaction: () => void;
 }
 
 interface TransactionProviderProps {
@@ -37,8 +40,17 @@ const TransactionContext = createContext({} as TransactionContextType);
 const TransactionProvider = ({ children }: TransactionProviderProps) => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [modalTransactionOpen, setModalTransactionOpen] = useState(false);
 
-  const fetchTransactions = useCallback(async () => {
+  const onOpenModalTransaction = () => {
+    setModalTransactionOpen(true);
+  };
+
+  const onCloseModalTransaction = () => {
+    setModalTransactionOpen(false);
+  };
+
+  const fetchTransactions = useCallback(async (searchQuery?: string) => {
     setIsLoading(true);
 
     const userStorage = localStorage.getItem('@facilite:user');
@@ -51,16 +63,37 @@ const TransactionProvider = ({ children }: TransactionProviderProps) => {
 
     const transactions: Transaction[] = [];
 
-    const transactionCollection = await collection(db, 'transactions');
-    const transactionQuery = await query(
+    const transactionCollection = collection(db, 'transactions');
+    const transactionQuery = query(
       transactionCollection,
       where('transaction.user', '==', user.email),
     );
+
     const data = await getDocs(transactionQuery);
     data.forEach(doc => {
       const transaction = doc.data().transaction as Transaction;
       transactions.push(transaction);
     });
+
+    if (searchQuery) {
+      const filteredTransactions = transactions.filter(
+        transaction =>
+          transaction.description.includes(searchQuery) ||
+          transaction.category.includes(searchQuery) ||
+          transaction.createdAt.includes(searchQuery),
+      );
+
+      if (filteredTransactions.length === 0) {
+        setTransactions(transactions);
+        alert(`Não foi encontrado nenhuma transação com a pesquisa: ${searchQuery}`);
+        setIsLoading(false);
+        return;
+      }
+
+      setTransactions(filteredTransactions);
+      setIsLoading(false);
+      return;
+    }
 
     setTransactions(transactions);
     setIsLoading(false);
@@ -97,8 +130,11 @@ const TransactionProvider = ({ children }: TransactionProviderProps) => {
       value={{
         transactions,
         isLoading,
+        modalTransactionOpen,
         fetchTransactions,
         createTransaction,
+        onOpenModalTransaction,
+        onCloseModalTransaction,
       }}
     >
       {children}
