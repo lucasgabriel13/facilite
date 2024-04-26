@@ -1,4 +1,5 @@
 # ![Logo](https://github.com/lucasgabriel13/facilite/assets/44211093/cfed3650-6bc9-49af-be0e-bb99f50546e1)
+![facilite](https://github.com/lucasgabriel13/facilite/assets/44211093/97116813-42bb-4512-9b23-3403ec20db4f)
 
 ## 💻 O projeto
 O projeto Facilite foi desenvolvido para ser um controlador de despesas e receitas para que você possa utilizar em qualquer lugar.
