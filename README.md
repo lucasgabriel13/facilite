@@ -1,7 +1,7 @@
 # ![Logo](https://github.com/lucasgabriel13/facilite/assets/44211093/cfed3650-6bc9-49af-be0e-bb99f50546e1)
 
 ## 💻 O projeto
-O projeto Facilite foi desenvolvido para aplicar os conhecimentos de densenvolvimento web criando uma aplicação que possa ser utilizada no dia-a-dia
+O projeto Facilite foi desenvolvido para ser um controlador de despesas e receitas para que você possa utilizar em qualquer lugar.
 
 Teste a aplicação: [clique aqui](https://facilite.vercel.app/)
 
